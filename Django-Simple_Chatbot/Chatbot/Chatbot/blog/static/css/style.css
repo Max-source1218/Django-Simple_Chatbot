@@ -1,0 +1,179 @@
+/* ===== CYBERPUNK FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&display=swap');
+
+/* ===== GLOBAL CYBERPUNK BG ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Share Tech Mono", monospace;
+    height: 100vh;
+    background: radial-gradient(circle at center, #05010e 10%, #000000 90%);
+    overflow: hidden;
+}
+
+/* ===== SCANLINE EFFECT ===== */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.02) 0,
+        rgba(255,255,255,0.02) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    opacity: .2;
+    z-index: 999;
+}
+
+/* ===== FLOATING ROBOT ===== */
+#cyberRobot {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    animation: hover 3s infinite ease-in-out;
+    z-index: 100;
+}
+
+#cyberRobot img {
+    width: 90px;
+    filter: drop-shadow(0 0 15px #7d00ff);
+}
+
+@keyframes hover {
+    0%, 100% { transform: translateY(0) rotate(1deg); }
+    50% { transform: translateY(-12px) rotate(-1deg); }
+}
+
+/* ===== CHAT CONTAINER ===== */
+.chatContainer {
+    width: 90%;
+    max-width: 500px;
+    height: 85vh;
+    margin: auto;
+    background: rgba(20, 0, 40, 0.45);
+    border: 2px solid #5500ff;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px #7d00ff, inset 0 0 25px #240040;
+    padding-top: 10px;
+    position: relative;
+}
+
+/* ===== HEADER ===== */
+.chatHeader {
+    text-align: center;
+    padding: 20px;
+    color: #d29eff;
+    text-shadow: 0 0 10px #b300ff, 0 0 20px #7d00ff;
+}
+
+.chatHeader h2 {
+    margin: 0;
+    font-family: "Orbitron", sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.chatHeader p {
+    margin: 5px 0 0;
+    opacity: .75;
+}
+
+/* ===== CHATBOX ===== */
+#chatbot {
+    height: 60vh;
+    overflow-y: auto;
+    padding: 20px;
+    color: #ffdbff;
+}
+
+#chatbot::-webkit-scrollbar { width: 6px; }
+#chatbot::-webkit-scrollbar-thumb {
+    background: #7d00ff;
+    border-radius: 20px;
+}
+
+/* ===== MESSAGE BUBBLES ===== */
+.botText, .userText { 
+    margin: 12px 0;
+    display: flex;
+    animation: fadeUp .25s ease;
+}
+
+.botText span, .userText span {
+    padding: 12px 16px;
+    max-width: 80%;
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.botText span {
+    background: rgba(100, 0, 180, 0.4);
+    border: 1px solid #b300ff;
+    box-shadow: 0 0 15px #7d00ff;
+}
+
+.userText { justify-content: flex-end; }
+
+.userText span {
+    background: rgba(0, 255, 255, 0.12);
+    border: 1px solid cyan;
+    color: cyan;
+    box-shadow: 0 0 15px cyan;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== INPUT BAR ===== */
+#userInput {
+    display: flex;
+    padding: 12px;
+    background: rgba(10,0,20,0.5);
+    border-top: 1px solid #5500ff;
+}
+
+#textInput {
+    flex: 1;
+    padding: 12px 16px;
+    background: black;
+    color: cyan;
+    border: 1px solid #7d00ff;
+    border-radius: 12px;
+    outline: none;
+    font-size: 15px;
+    box-shadow: inset 0 0 12px #5500ff;
+}
+
+#textInput:focus {
+    border-color: cyan;
+    box-shadow: 0 0 10px cyan;
+}
+
+#buttonInput {
+    margin-left: 10px;
+    padding: 12px 18px;
+    background: #7d00ff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: "Orbitron";
+    text-shadow: 0 0 10px #ff00ff;
+    box-shadow: 0 0 12px #b300ff;
+    transition: .2s;
+}
+
+#buttonInput:hover {
+    box-shadow: 0 0 20px #ff00ff;
+    transform: scale(1.05);
+}
